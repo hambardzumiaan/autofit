@@ -1,0 +1,177 @@
+extends layouts/layout
+block content
+	// hero
+	.hero
+		.hero__slide(style="background-image: url(img/bg-hero.jpg)")
+			.hero__container.container
+				.hero__inner
+					h1.hero__title Looking for a car, <span>but cannot find the right one to fit your budget?</span>
+					.hero__text
+						p
+							strong Let us help!
+						p We are small company that works for quality not quantity!
+					a.btn(href='#') More info
+					+arrows
+	// section
+	.section(style="background-image: url(img/bg-figures.svg)")
+		.section__container.container
+			.title-button
+				h2.title Our inventory
+				a.btn.btn--stroke(href="#") See all
+			ul.catalog
+				if cars && cars.length > 0
+					each item in cars
+						if item.show_on_page
+							li
+								+card(item)
+				else
+					p No cars found.
+			h2.title Auto news
+			ul.news
+				li
+					a.news__link(href="#")
+						img(src="img/news-1.jpg", alt="")
+						.news__inner
+							.news__title Certified Pre-Owned vs. Used Cars
+							.news__text Trying to decide between purchasing a Certified Pre-Qwned (CPO), new or used car? Our pros and cons list will quide you htrough how to make the best buying...
+							.news__more Explore More 
+				li
+					a.news__link(href="#")
+						img(src="img/news-2.jpg", alt="")
+						.news__inner
+							.news__title The Best Family Cars
+							.news__text The number of seats is just the tip of the iceberg. Learn what makes for the best family car, from advanced safety features to cargo spece and family...
+							.news__more Explore More 
+				li
+					a.news__link(href="#")
+						img(src="img/news-3.jpg", alt="")
+						.news__inner
+							.news__title Why is My “Check Engine” light On? 4 Common...
+							.news__more Explore More 
+				li
+					a.news__link(href="#")
+						img(src="img/news-4.jpg", alt="")
+						.news__inner
+							.news__title How to Sell a Car Fast
+							.news__more Explore More 
+	// section
+	.section.section--gray
+		.section__container.container
+			h2.title Company Services
+			.services
+				ul.services__nav
+					li.active
+						button Personal selection of cars at the auction
+					li
+						button Vehicle transportation
+					li
+						button A/C testing, charging and repair
+					li
+						button Vehicle Computer diagnostics and updates
+					li
+						button Engine tuneup, and maintenance
+					li
+						button Body repair and paint carrection
+				.services__container
+					.services__item
+						.services__slide
+							.services__inner
+								h3.services__caption Vehicle transportation
+								.services__text
+									p
+										strong Get pre-qualified to see rates and terms for cars that fit your budget.
+									ul
+										li 100% online lending
+										li We help you get approved
+										li Pre-qualification does not impact your credit score
+								a.btn(href='#') More info
+								+arrows
+							.services__preview
+								img(src="img/service.jpg", alt="")
+	// section				
+	.section.section--overflow
+		.section__container.container
+			+auctions
+			hr.hr
+			.pride.mb-40
+				.pride__col
+					.pride__inner
+						h2.title The pride of the company is the customers
+						.pride__text We will pick up and deliver your car from anywhere in the USA and WorldWide
+						a.btn(href='#') Write a feedback
+				.pride__col
+					img(srcset="img/customers.png 2x", src="img/customers.png", alt="")
+			.carousel.mb-40
+				.carousel__inner
+					.carousel__slide
+						img(src="img/photo-1.jpg", alt="")
+					.carousel__slide
+						img(src="img/photo-1.jpg", alt="")
+					.carousel__slide
+						img(src="img/photo-1.jpg", alt="")
+					.carousel__slide
+						img(src="img/photo-1.jpg", alt="")
+					.carousel__slide
+						img(src="img/photo-1.jpg", alt="")
+					.carousel__slide
+						img(src="img/photo-1.jpg", alt="")
+				button.carousel__prev
+					<svg><path d="M19.5 0C30.3 0 39 8.7 39 19.5S30.3 39 19.5 39C8.8 39 0 30.2 0 19.5S8.8 0 19.5 0zm0 3.6c-8.7 0-15.8 7.1-15.8 15.8s7.1 15.9 15.8 15.9 15.8-7.1 15.8-15.8-7-15.9-15.8-15.9zm2.6 7.7c.8.8.8 2.2 0 3.1l-3 3h8.5a2.22 2.22 0 0 1 2.2 2.2 2.22 2.22 0 0 1-2.2 2.2h-8.5l2.9 3c.8.8.8 2.2 0 3.1-.4.4-1 .6-1.5.6-.6 0-1.1-.2-1.5-.6l-6.6-6.6c-.8-.8-.8-2.2 0-3.1l6.6-6.9c.8-.8 2.2-.8 3.1 0z"/></svg>
+				button.carousel__next
+					<svg><path d="M19.5 0C30.2 0 39 8.8 39 19.5S30.2 39 19.5 39C8.7 39 0 30.3 0 19.5S8.7 0 19.5 0zm0 3.6c-8.8 0-15.8 7.2-15.8 15.9s7.1 15.8 15.8 15.8 15.8-7.2 15.8-15.9S28.2 3.6 19.5 3.6zm-2.6 7.7c.9-.8 2.3-.8 3.1 0h0l6.6 6.9c.8.9.8 2.3 0 3.1h0L20 27.9c-.4.4-.9.6-1.5.6-.5 0-1.1-.2-1.5-.6-.8-.9-.8-2.3 0-3.1h0l2.9-3h-8.5a2.22 2.22 0 0 1-2.2-2.2 2.22 2.22 0 0 1 2.2-2.2h0 8.5l-3-3c-.8-.9-.8-2.3 0-3.1z"/></svg>
+			.carousel
+				.carousel__inner
+					.carousel__slide
+						.review
+							.review__head
+								.review__name Brendon
+								ul.review__stars
+									li.active
+									li.active
+									li.active
+									li
+									li
+								.review__date 415 дней назад
+							.review__text The guys are doing a great job, I liked everything and everything was cool! If there were any doubts or questions, they were dispelled in no time. I recommend it to anyone who has doubts! I will use the services of this company in the future.
+					.carousel__slide
+						.review
+							.review__head
+								.review__name Brendon
+								ul.review__stars
+									li.active
+									li.active
+									li.active
+									li
+									li
+								.review__date 415 дней назад
+							.review__text The guys are doing a great job, I liked everything and everything was cool! If there were any doubts or questions, they were dispelled in no time. I recommend it to anyone who has doubts! I will use the services of this company in the future.
+				button.carousel__prev
+					<svg><path d="M19.5 0C30.3 0 39 8.7 39 19.5S30.3 39 19.5 39C8.8 39 0 30.2 0 19.5S8.8 0 19.5 0zm0 3.6c-8.7 0-15.8 7.1-15.8 15.8s7.1 15.9 15.8 15.9 15.8-7.1 15.8-15.8-7-15.9-15.8-15.9zm2.6 7.7c.8.8.8 2.2 0 3.1l-3 3h8.5a2.22 2.22 0 0 1 2.2 2.2 2.22 2.22 0 0 1-2.2 2.2h-8.5l2.9 3c.8.8.8 2.2 0 3.1-.4.4-1 .6-1.5.6-.6 0-1.1-.2-1.5-.6l-6.6-6.6c-.8-.8-.8-2.2 0-3.1l6.6-6.9c.8-.8 2.2-.8 3.1 0z"/></svg>
+				button.carousel__next
+					<svg><path d="M19.5 0C30.2 0 39 8.8 39 19.5S30.2 39 19.5 39C8.7 39 0 30.3 0 19.5S8.7 0 19.5 0zm0 3.6c-8.8 0-15.8 7.2-15.8 15.9s7.1 15.8 15.8 15.8 15.8-7.2 15.8-15.9S28.2 3.6 19.5 3.6zm-2.6 7.7c.9-.8 2.3-.8 3.1 0h0l6.6 6.9c.8.9.8 2.3 0 3.1h0L20 27.9c-.4.4-.9.6-1.5.6-.5 0-1.1-.2-1.5-.6-.8-.9-.8-2.3 0-3.1h0l2.9-3h-8.5a2.22 2.22 0 0 1-2.2-2.2 2.22 2.22 0 0 1 2.2-2.2h0 8.5l-3-3c-.8-.9-.8-2.3 0-3.1z"/></svg>
+	// section
+	.section.section--gray.section--overflow
+		.section__container.container
+			form.ask(action)
+				h2.title Didn't find the desired car?
+				.ask__text Indicate the make and model of the car, leave your phone number and we will send you several options!
+				.ask__row
+					.ask__col
+						label.field
+							span.field__label Choose brand
+							input.field__input(type="text" placeholder="For example Acura")
+					.ask__col
+						label.field
+							span.field__label Choose a model
+							input.field__input(type="text" placeholder="For example MDX")
+					.ask__col
+						label.field
+							span.field__label Phone number
+							input.field__input(type="text" placeholder="+ 1 (_ _ _ ) _ _ _ - _ _ - _ _")
+				button.btn(type="submit") Pick me a car
+				.ask__preview
+					img(src="img/search-car-1.png", alt="")
+	// section
+	.section
+		.section__container.container
+			+seo

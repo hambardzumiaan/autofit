@@ -1,0 +1,81 @@
+mixin arrows
+	.arrows
+		button.arrows__prev
+			<svg><path d="M8 0h1v8h50v1H9v8H8v-1H7v-1H6v-1H5v-1H4v-1H3v-1H2v-1H1V9H0V8h1V7h1V6h1V5h1V4h1V3h1V2h1V1h1V0z"/></svg>
+		.arrows__pages 01 <span>/ 05</span>
+		button.arrows__next
+			<svg><path d="M51 1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1V9H0V8h50V0h1v1z"/></svg>
+
+mixin card(item)
+	a.card(href=`/${item.vin}`)
+		.card__preview
+			if item.general_photos && item.general_photos.length > 0
+				each generalPhoto in item.general_photos
+					if(generalPhoto.active)
+						img(src=`${generalPhoto.image}`, alt=`${item.mark} ${item.model} ${item.year}`)
+			if item.status === "Под заказ"
+				.card__badge.card__badge--yellow='Сoming soon'
+			if item.status === "Наличии"
+				.card__badge='Avalible now'
+			.card__play
+		.card__title=`${item.mark} ${item.model} ${item.year}`
+		.card__option In stock
+		.card__text=`${item.bodyStyle} ${item.fuelType} ${item.transmission} ${item.seat} ${item.exteriorColor}`
+		.card__price=`$ ${item.price}`
+
+mixin seo
+	.content.content--gray
+		h3 Процесс взаимодействия с заказчиком при выборе авто с ацкциона из Америки
+		p Жители Украины имеют возможность приобрести на американских аукционах бензиновые, дизельные, электрические, гибридные машины. Наши представительства расположены в Киеве, Днепре, Львове, Одессе, Виннице, Запорожье, Харькове. Несущественно битые авто из США поддаются легкому восстановлению к идеальному состоянию. Процесс взаимодействия с клиентами компании PLC GROUP выглядит так:
+		p Подбираем максимальное количество вариантов под Ваш бюджет и требования.Заключение договора о предоставлении услуг по выбору и доставке авто из США.Изучаем всю историю автомобиля и предоставляем вам полный отчет по базам Карфакс о его состоянии.Оплата по инвойс производится только после полной проверки и покупки автомобиля.Доставка в Украину (порт Одесса) занимает от 15 до 60 дней с момента покупки в зависимости от местонахождения авто.По прибытии авто из США в Украину производим все необходимые таможенные процедуры.
+
+mixin auctions
+	h2.title Аукционы с которыми мы работаем
+	.auctions
+		ul.tabs.tabs--buttons
+			li.active
+				button
+					img(src="img/maheim.png", alt="")
+					| Maheim
+			li
+				button Copart
+			li
+				button IAAI
+			li
+				button Impac
+			li
+				button America’s AA
+			li
+				button Edge Pipeline
+			li
+				button Cars.com
+			li
+				button Ebay
+			li
+				button Adesa
+			li
+				button NPA
+		.auctions__container
+			.auctions__content.content
+				p Аукцион Манхейм – крупнейший в мире оптовый автомобильный аукцион. Торги здесь идут как в обычно режиме, так и в формате онлайн, что позволяет клиентам со всего мира купить авто из Америки. Помимо продажи подержанных авто без повреждений, площадка предоставляет ряд дополнительных услуг по доставке, ремонту, продаже запасных деталей. Ежедневно ассортимент MANHEIM пополняется новыми лотами.
+				p Аукцион Манхейм – крупнейший в мире оптовый автомобильный аукцион. Торги здесь идут как в обычно режиме, так и в формате онлайн, что позволяет клиентам со всего мира купить авто из Америки. Помимо продажи подержанных авто без повреждений, площадка предоставляет ряд дополнительных услуг по доставке, ремонту, продаже запасных деталей. Ежедневно ассортимент MANHEIM пополняется новыми лотами.
+
+mixin ask
+	// section
+	.section.section--gray.section--overflow
+		.section__container.container
+			form.ask(action)
+				h2.title Не нашли желаемый авто в каталоге?
+				.ask__subtitle Заполните форму на подбор авто с аукциона!
+				.ask__row
+					.ask__col
+						label.field
+							span.field__label Ваше имя
+							input.field__input(type="text" placeholder="Имя")
+					.ask__col
+						label.field
+							span.field__label Номер телефона
+							input.field__input(type="text" placeholder="+ 38 (_ _ _ ) _ _ _ - _ _ - _ _")
+				button.btn(type="submit") Оставить заявку
+				.ask__preview
+					img(src="img/search-car-1.png", alt="")

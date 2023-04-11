@@ -1,0 +1,153 @@
+extends layouts/layout
+block content
+	// breadcrumbs
+	.breadcrumbs
+		.breadcrumbs__container.container
+			ul
+				li
+					a(href="#") Главная
+				li Каталог транспорта
+	// section
+	.section
+		.section__container.container
+			.title Каталог транспорта
+			.layout
+				button.layout__open.btn.btn--stroke Показати фільтри
+				.layout__sidebar
+					.layout__inner
+						button.layout__close
+							<svg width="24" height="24"><rect width="24" height="3" y="10.5" fill="#000000" transform="rotate(-45 12 12)"/><rect width="24" height="3" y="10.5" fill="#000000" transform="rotate(45 12 12)"/></svg>
+						.filters
+							ul.tabs.tabs--small
+								li.active
+									button Все
+								li
+									button В наличии
+								li
+									button Под заказ
+							.filters__title Магазин по бюджету
+							.filters__item
+								.filters__head.active Цена
+								.filters__body(style="display: block")
+									.range
+										.range__container
+											.range__value(style="left: 20%; width: 60%;")
+												.range__handle
+												.range__handle
+										.range__fields
+											label.field
+												span.field__label Min
+												input.field__input(type="text" placeholder="500 $")
+											label.field
+												span.field__label Max
+												input.field__input(type="text" placeholder="50 000 $")
+							.filters__item
+								.filters__head.active Сертифиированые
+								.filters__body(style="display: block")
+									label.toggle
+										input(type="checkbox")
+										span Показать только сертифицированые
+							.filters__title Уточните свой поиск
+							.filters__item
+								.filters__head Марка, модель и отделка
+								.filters__body
+							.filters__item
+								.filters__head Стиль и цвет кузова
+								.filters__body
+							.filters__item
+								.filters__head Год и пробег
+								.filters__body
+							.filters__item
+								.filters__head.active Тип топлива и миль на галлон
+								.filters__body(style="display: block")
+									label.checkbox
+										input(type="checkbox")
+										span Бензин
+									label.checkbox
+										input(type="checkbox")
+										span Гибридный электрический
+									label.checkbox
+										input(type="checkbox")
+										span Подключаемый гибрид
+									label.checkbox
+										input(type="checkbox")
+										span Аккумулятор Электрический
+									label.checkbox
+										input(type="checkbox")
+										span Дизель
+									label.checkbox
+										input(type="checkbox")
+										span Экономичный расход топлива (40+ миль на галлон по шоссе)
+							.filters__item
+								.filters__head Тип привода и двигатель
+								.filters__body
+				.layout__container
+					.filtered
+						button F150
+						button Автомат
+						button 2021
+						button F150
+						button Автомат
+						button 2021
+					.sort
+						.sort__group
+							.sort__label Сортировать:
+							select.select
+								option от дешевых
+								option от дорогих
+						.sort__view
+							button.active
+								<svg width="22" height="22"><path d="M0 0h4.783v4.783H0V0zm8.609 0h4.783v4.783H8.609V0zm8.609 0H22v4.783h-4.783V0zM0 8.609h4.783v4.783H0V8.609zm8.609 0h4.783v4.783H8.609V8.609zm8.609 0H22v4.783h-4.783V8.609zM0 17.217h4.783V22H0v-4.783zm8.609 0h4.783V22H8.609v-4.783zm8.609 0H22V22h-4.783v-4.783z"/></svg>
+							button
+								<svg width="24" height="24"><path d="M0 6V3h24v3H0zm0 8v-3h24v3H0zm0 8v-3h24v3H0z"/></svg>
+					ul.catalog.catalog--three
+						if cars && cars.length > 0
+							each item in cars
+								if item.show_on_page
+									li
+										+card(item)
+						else
+							p No cars found.
+					.pager
+						ul.pager__list
+							li.pager__arrow
+								a(href="#")
+									<svg><path d="M0.93934 13.0607C0.353553 12.4749 0.353553 11.5251 0.93934 10.9393L10.4853 1.3934C11.0711 0.807611 12.0208 0.807611 12.6066 1.3934C13.1924 1.97919 13.1924 2.92893 12.6066 3.51472L4.12132 12L12.6066 20.4853C13.1924 21.0711 13.1924 22.0208 12.6066 22.6066C12.0208 23.1924 11.0711 23.1924 10.4853 22.6066L0.93934 13.0607ZM4 13.5H2V10.5H4V13.5Z"/></svg>
+							li.active
+								a(href="#") 1
+							li
+								a(href="#") 2
+							li
+								a(href="#") 3
+							li
+								a(href="#") 4
+							li
+								a(href="#") 5
+							li
+								a(href="#") ...
+							li
+								a(href="#") 9
+							li.pager__arrow
+								a(href="#")
+									<svg><path d="M13.0607 13.0607C13.6464 12.4749 13.6464 11.5251 13.0607 10.9393L3.51472 1.3934C2.92893 0.807611 1.97919 0.807611 1.3934 1.3934C0.807611 1.97919 0.807611 2.92893 1.3934 3.51472L9.87868 12L1.3934 20.4853C0.807611 21.0711 0.807611 22.0208 1.3934 22.6066C1.97919 23.1924 2.92893 23.1924 3.51472 22.6066L13.0607 13.0607ZM10 13.5H12V10.5H10V13.5Z"/></svg>
+						.pager__counter Страница <strong>1</strong> из 100
+			// only for demo
+			script.
+				var open = document.querySelector(".layout__open"),
+					close = document.querySelector(".layout__close");
+					sidebar = document.querySelector(".layout__sidebar");
+
+				open.onclick = function () {
+					sidebar.classList.add("visible");
+				};
+
+				close.onclick = function () {
+					sidebar.classList.remove("visible");
+				};
+	+ask
+	// section
+	.section
+		.section__container.container
+			+auctions
+			hr.hr
+			+seo

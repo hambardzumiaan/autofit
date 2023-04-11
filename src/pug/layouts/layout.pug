@@ -1,0 +1,15 @@
+include mixins
+doctype html
+html(lang="en")
+    head
+        include head
+    body(class=bodyClass)
+        // outer
+        .outer
+            // header
+            include ../includes/header
+            // inner
+            .inner
+                block content
+            // footer
+            include ../includes/footer
